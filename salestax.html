@@ -16,17 +16,17 @@
                 <p>You will need a few inputs to make this work properly.  You can delete this comment once you feel you know how many variables you need.</p>
                 <div class="options">
                     <label>Price</label>
-                    <input id="price" type="" name="" value=""></input>
-                </div>=
+                    <input id="price"type="" name="" value=""></input>
+                </div>
                 <div class="options">
                     <label>Shipping</label><br><br>
-                    <input class=shippingType type="radio" name="shipping" value="standard">Standard</input><br>
-                    <input class=shippingType type="radio" name="shipping" value="Priority">Priority</input><br>
-                    <input class=shippingType type="radio" name="shipping" value="Express">Express</input><br>
+                    <input type="radio" name="shipping" value="standard">Standard</input><br>
+                    <input type="radio" name="shipping" value="Priority">Priority</input><br>
+                    <input type="radio" name="shipping" value="Express">Express</input><br>
                 </div>
                 <div class="options">
                     <label>City</label>
-                    <input id=shippingLocation type="" name="" value="">
+                    <input id="shippingLocation" type="" name="" value="">
                 </div>
                 <button onclick="calculate()">Calculate</button>
             </div>
@@ -40,21 +40,56 @@
         function calculate(){
 
         //Query select your information
-        const doc = document
-        let price = doc.querySelector('#price');
-        let shippingType = doc.querySelctor('.shippingType');
-        let shippingLocation = doc.querySelector('#shippingLocation');
+       const doc = document
+       let price = doc.querySelector('#price');
+       let shippingType = doc.querySelctor('.shippingType');
+       let shippingLocation = doc.querySelector('#shippingLocation');
 
         //conditionally choose the shipping tax
-        let shippingTax = 1.1025;
+        let shippingTax;
         let tax10000 = ['Peoria','Arlington Heights','Schaumburg','Evanston','Palatine'];
+        let tax10250 = ['Chicago','Elgin','Skokie'];
+        let tax8250 = ['Rockford','Aurora','Waukegan'];
+        let tax8750 = ['Joliet','Bloomington'];
+        let tax8500 = ['Springfield','Bolingbrook'];
+        let tax9250 = ['Decatur'];
+        let tax9750 = ['Orland Park'];
+        let tax10750 = ['Cicero'];
+        let tax9000 = ['Champaign'];
+        let tax7500 = ['Naperville'];
+        ]
 
         if(tax10000.includes(shippingLocation)){
+             shippingTax = 1.10;
             //think about it
         }
-
-
-
-        }
+        else if(tax1025.includes(shippingLocation)){
+             shippingTax = 1.025;
+       }
+       else if(tax8250.includes(shippingLocation)){
+             shippingTax = 1.0825;
+       }
+       else if(tax8750.includes(shippingLocation)){
+             shippingTax = 1.0875;
+       }
+       else if(tax8500.includes(shippingLocation)){
+             shippingTax =  1.0850;
+       }
+       else if(tax9250.incudes(shippingLocation)){
+             shippingTax = 1.0925;
+       }
+       else if(tax9750.includes(shippingLocation)){
+             shippingTax = 1.0975;
+       }
+       else if(tax10750.includes(shippingLocation)){
+             shippingTax = 1.0750;
+       }
+       else if(tax9000.includes(shippingLocation)){
+             shippingTax = 1.09;
+      }
+       else if(tax7500.includes(shippingLocation)){
+             shippingTax = 1.0750
+       }
+ }
     </script>
 </html>
