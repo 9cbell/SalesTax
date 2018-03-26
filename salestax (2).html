@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="your name">
+        <link type="text/css" rel="stylesheet" href="taxstyles.css">
+        <title>Sales tax</title>
+    </head>
+    <body>
+        <section id="widget">
+            <header>
+                <h1>Illinois Sales Tax Calculator</h1>
+                <h4>price of goods and services changes based on the city or county purchased.</h4>
+            </header>
+            <div id="user-input">
+                <p>You will need a few inputs to make this work properly.  You can delete this comment once you feel you know how many variables you need.</p>
+                <div class="options">
+                    <label>Price</label>
+                    <input id="price" type="" name="" value=""></input>
+                </div>
+                <div class="options">
+                    <label>Shipping</label><br><br>
+                    <select id="shipping" name = "shipping">
+                    <option value=""> standard </options>
+                        <option value=""> priority </options>
+                            <option value=""> express </options>
+                </div>
+                <div class="options">
+                    <label>City</label>
+                    <input type="" name="" value="">
+                </div>
+                <button onclick="calculate()">Calculate</button>
+            </div>
+            <footer>
+                <span id="answer"></span>
+            </footer>
+        </section>
+    </body>
+    <script type="text/javascript">
+
+        function calculate(){
+        const doc = document
+
+        //Query select your information
+        let price = doc.querySelector('#price').value;
+        let shippingType = doc.querySelectorAll('#standard', '#priority', '#express').value;
+        let shippingLocation = doc.querySelector('#shippingTax').value;
+        let answer = doc.querySelector('#answer');
+        //conditionally choose the shipping tax
+        let shippingTax;
+        let type;
+        let tax10000 = ['Peoria','Arlington Heights','Schaumburg','Evanston','Palatine'];
+        let tax8750 = ['Joliet','Bloomington'];
+        let tax9000 = ['Champaign']
+        let tax8250 = ['Aurora', 'Waukegan']
+        let tax8500 = ['Springfield', 'Bolingbrook']
+        let tax10250 = ['Chicago']
+
+        if(tax10000.includes(shippingLocation)){
+            shippingTax = 1.1;
+        }
+        else if(tax8750.includes(shippingLocation)){
+            shippingTax = 1.0875;
+        }
+        else if(tax9000.includes(shippingLocation)){
+            shippingTax = 1.09;
+        }
+        else if(tax8250.includes(shippingLocation)){
+            shippingTax = 1.0825;
+        }
+        else if(tax8500.includes(shippingLocation)){
+            shippingTax = 1.085
+        }
+        else if(tax10250.includes(shippingLocation)){
+            shippingTax = 1.1025;
+        }
+
+        if()
+        let cost = Number(price);
+        let totalCost = (cost*1.0625)+(shippingType*shippingTax);
+        answer.innerHTML = '$' + Math.round(100*totalCost)/100;
+
+    </script>
+</html>
