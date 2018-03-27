@@ -16,7 +16,7 @@
                 <p>You will need a few inputs to make this work properly.  You can delete this comment once you feel you know how many variables you need.</p>
                 <div class="options">
                     <label>Price</label>
-                    <input id="price" type="" name="" value=""></input>
+                    <input id="price" type="text" name="" value=""></input>
                 </div>
                 <div class="options">
                     <label>Shipping</label><br><br>
@@ -24,10 +24,11 @@
                     <option value=""> standard </options>
                         <option value=""> priority </options>
                             <option value=""> express </options>
+                            </select>
                 </div>
                 <div class="options">
                     <label>City</label>
-                    <input type="" name="" value="">
+                    <input id="location" type="text" name="" value="">
                 </div>
                 <button onclick="calculate()">Calculate</button>
             </div>
@@ -39,22 +40,22 @@
     <script type="text/javascript">
 
         function calculate(){
-        const doc = document
+        const doc = document;
 
         //Query select your information
-        let price = doc.querySelector('#price').value;
-        let shippingType = doc.querySelectorAll('#standard', '#priority', '#express').value;
-        let shippingLocation = doc.querySelector('#shippingTax').value;
+        let price = Number(doc.querySelector('#price').value);
+        let shippingType = doc.querySelectorAll('#shipping').value;
+        let shippingLocation = doc.querySelector('#location').value;
         let answer = doc.querySelector('#answer');
         //conditionally choose the shipping tax
         let shippingTax;
         let type;
         let tax10000 = ['Peoria','Arlington Heights','Schaumburg','Evanston','Palatine'];
         let tax8750 = ['Joliet','Bloomington'];
-        let tax9000 = ['Champaign']
-        let tax8250 = ['Aurora', 'Waukegan']
-        let tax8500 = ['Springfield', 'Bolingbrook']
-        let tax10250 = ['Chicago']
+        let tax9000 = ['Champaign'];
+        let tax8250 = ['Aurora', 'Waukegan'];
+        let tax8500 = ['Springfield', 'Bolingbrook'];
+        let tax10250 = ['Chicago'];
 
         if(tax10000.includes(shippingLocation)){
             shippingTax = 1.1;
@@ -69,16 +70,27 @@
             shippingTax = 1.0825;
         }
         else if(tax8500.includes(shippingLocation)){
-            shippingTax = 1.085
+            shippingTax = 1.085;
         }
         else if(tax10250.includes(shippingLocation)){
             shippingTax = 1.1025;
         }
 
-        if()
-        let cost = Number(price);
-        let totalCost = (cost*1.0625)+(shippingType*shippingTax);
-        answer.innerHTML = '$' + Math.round(100*totalCost)/100;
+        if(shippingType == 'standard'){
+          type = 2.99;
+        }
 
+        else if(shippingType == 'priority'){
+          type = 4.99;
+        }
+
+        else if (shippingType == 'express') {
+          type = 8.99;
+        }
+
+
+        let totalCost = (price*1.0625)+(type*shippingTax);
+        answer.innerHTML = '$' + Math.round(100*totalCost)/100;
+      }
     </script>
 </html>
