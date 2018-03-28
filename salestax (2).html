@@ -21,10 +21,10 @@
                 <div class="options">
                     <label>Shipping</label><br><br>
                     <select id="shipping" name = "shipping">
-                    <option value=""> standard </options>
-                        <option value=""> priority </options>
-                            <option value=""> express </options>
-                            </select>
+                    <option value="standard"> standard </options>
+                    <option value="priority"> priority </options>
+                    <option value="express"> express </options>
+                    </select>
                 </div>
                 <div class="options">
                     <label>City</label>
@@ -44,7 +44,7 @@
 
         //Query select your information
         let price = Number(doc.querySelector('#price').value);
-        let shippingType = doc.querySelectorAll('#shipping').value;
+        let shippingType = doc.querySelector('#shipping').value;
         let shippingLocation = doc.querySelector('#location').value;
         let answer = doc.querySelector('#answer');
         //conditionally choose the shipping tax
